@@ -4,215 +4,795 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cuidar También Necesita Cuidado (CTNC) | Apoyo para Cuidadores de Alzheimer</title>
-  <meta name="description" content="Apoyo emocional práctico y recursos gratuitos para cuidadores de personas con Alzheimer o demencia en español. No tienes que cuidar en soledad." />
+  <meta name="description" content="Apoyo práctico y acompañamiento para cuidadores de personas con Alzheimer o demencia en español. No tienes que cuidar en soledad." />
   <meta name="keywords" content="cuidadores alzheimer, demencia, apoyo cuidadores, recursos cuidadores, cuidar en español, cuidado familiar" />
   <meta name="author" content="CTNC - Cuidar También Necesita Cuidado" />
   <meta property="og:title" content="Cuidar También Necesita Cuidado (CTNC)" />
-  <meta property="og:description" content="No tienes que cuidar en soledad. Apoyo emocional y recursos gratuitos para cuidadores de Alzheimer." />
+  <meta property="og:description" content="No tienes que cuidar en soledad. Apoyo y acompañamiento para cuidadores de Alzheimer." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_ES" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ── TOKENS ── */
     :root {
-      --cream:#FAF6F0;--beige:#F0E8DC;--sand:#E2D5C3;--warm:#C9A882;
-      --terracotta:#B07055;--rust:#8C4A2F;--sage:#7A9E7E;--sage-lt:#A8C5AC;
-      --sage-dk:#5A7A5E;--brown:#5C3D2E;--text:#3A2A1E;--text-lt:#6B5347;--white:#FFFFFF;
-      --font-display:'Lora',Georgia,serif;--font-body:'Nunito',sans-serif;
-      --radius:16px;--shadow:0 4px 24px rgba(90,50,30,0.10);--shadow-lg:0 8px 40px rgba(90,50,30,0.15);
+      --cream: #FAF6F0;
+      --beige: #F0E8DC;
+      --sand: #E2D5C3;
+      --warm: #C9A882;
+      --terracotta: #B07055;
+      --rust: #8C4A2F;
+      --sage: #7A9E7E;
+      --sage-lt: #A8C5AC;
+      --sage-dk: #5A7A5E;
+      --brown: #5C3D2E;
+      --text: #3A2A1E;
+      --text-lt: #5A463A;   /* mejorado para contraste 55+ */
+      --white: #FFFFFF;
+      --font-display: 'Lora', Georgia, serif;
+      --font-body: 'Nunito', sans-serif;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(90,50,30,0.10);
+      --shadow-lg: 0 8px 40px rgba(90,50,30,0.15);
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;font-size:18px;}
-    body{background:var(--cream);color:var(--text);font-family:var(--font-body);line-height:1.7;overflow-x:hidden;}
-    img{display:block;max-width:100%;}
-    a{color:inherit;text-decoration:none;}
-    .container{width:92%;max-width:1060px;margin:0 auto;}
-    .section{padding:80px 0;}
-    .section-alt{background:var(--beige);}
-    .badge{display:inline-block;background:var(--sage-lt);color:var(--sage-dk);font-size:0.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:16px;}
-    .badge-warm{background:#F2E0CE;color:var(--terracotta);}
-    h1,h2,h3{font-family:var(--font-display);line-height:1.25;}
-    h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:700;}
-    h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:600;}
-    h3{font-size:1.25rem;font-weight:600;}
-    p{font-size:1.05rem;}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:50px;font-family:var(--font-body);font-size:1rem;font-weight:700;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s,background .2s;text-align:center;line-height:1.2;}
-    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
-    .btn:active{transform:translateY(0);}
-    .btn-primary{background:var(--rust);color:var(--white);}
-    .btn-primary:hover{background:var(--brown);}
-    .btn-outline{background:transparent;color:var(--rust);border:2px solid var(--rust);}
-    .btn-outline:hover{background:var(--rust);color:var(--white);}
-    .btn-sage{background:var(--sage);color:var(--white);}
-    .btn-sage:hover{background:var(--sage-dk);}
-    .btn-white{background:var(--white);color:var(--rust);}
-    .btn-white:hover{background:var(--beige);}
-    .btn-xs{padding:10px 20px;font-size:0.85rem;}
 
-    /* NAV */
-    nav{position:sticky;top:0;z-index:100;background:rgba(250,246,240,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--sand);padding:14px 0;}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;}
-    .nav-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--rust);line-height:1.2;}
-    .nav-logo span{display:block;font-size:0.7rem;font-weight:400;color:var(--text-lt);font-family:var(--font-body);}
-    .nav-links{display:flex;gap:28px;list-style:none;font-size:0.9rem;font-weight:600;}
-    .nav-links a{color:var(--text-lt);transition:color .2s;}
-    .nav-links a:hover{color:var(--rust);}
-    @media(max-width:700px){.nav-links{display:none;}}
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.85;   /* mejorado para legibilidad 55+ */
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 92%; max-width: 1060px; margin: 0 auto; }
+    .section { padding: 80px 0; }
+    .section-alt { background: var(--beige); }
 
-    /* HERO */
-    #inicio{background:linear-gradient(160deg,var(--cream) 0%,var(--beige) 60%,#E8D8C4 100%);padding:80px 0 60px;position:relative;overflow:hidden;}
-    #inicio::before{content:'';position:absolute;top:-80px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,130,0.25) 0%,transparent 70%);pointer-events:none;}
-    #inicio::after{content:'';position:absolute;bottom:-60px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(122,158,126,0.18) 0%,transparent 70%);pointer-events:none;}
-    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
-    @media(max-width:760px){.hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}}
-    .hero-eyebrow{font-family:var(--font-body);font-size:0.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sage-dk);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-    .hero-eyebrow::before{content:'';display:inline-block;width:28px;height:2px;background:var(--sage);}
-    .hero-title{color:var(--brown);margin-bottom:20px;}
-    .hero-title em{font-style:italic;color:var(--terracotta);}
-    .hero-sub{font-size:1.15rem;color:var(--text-lt);margin-bottom:36px;max-width:460px;}
-    .hero-btns{display:flex;flex-wrap:wrap;gap:14px;}
-    .hero-trust{margin-top:40px;display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text-lt);}
-    .trust-dots{display:flex;}
-    .dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--cream);background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:14px;margin-left:-8px;}
-    .dot:first-child{margin-left:0;}
-    .hero-visual{display:flex;justify-content:center;align-items:center;}
-    .hero-card{background:var(--white);border-radius:24px;padding:36px 32px;box-shadow:var(--shadow-lg);max-width:320px;text-align:center;position:relative;}
-    .hero-card::before{content:'';position:absolute;top:-16px;right:-16px;width:60px;height:60px;background:var(--beige);border-radius:50%;}
-    .hero-card-badge{position:absolute;top:-12px;left:24px;background:var(--sage);color:var(--white);font-size:0.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;}
-    .hero-icon{font-size:3.5rem;margin-bottom:16px;}
-    .hero-card h3{font-size:1.05rem;color:var(--brown);margin-bottom:8px;}
-    .hero-card p{font-size:0.9rem;color:var(--text-lt);margin-bottom:20px;}
+    /* ── BADGE ── */
+    .badge {
+      display: inline-block;
+      background: var(--sage-lt);
+      color: var(--sage-dk);
+      font-size: 0.9rem;   /* mínimo 0.9rem para audiencia 55+ */
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .badge-warm { background: #F2E0CE; color: var(--terracotta); }
 
-    /* ABOUT */
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-    @media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
-    .about-text h2{color:var(--brown);margin-bottom:16px;}
-    .about-text p{color:var(--text-lt);margin-bottom:14px;}
-    .about-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
-    .pill{background:var(--white);border-radius:50px;padding:8px 18px;font-size:0.85rem;font-weight:600;color:var(--brown);display:flex;align-items:center;gap:6px;box-shadow:0 2px 10px rgba(90,50,30,0.08);}
-    .values-stack{display:flex;flex-direction:column;gap:20px;}
-    .value-card{background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;transition:transform .2s;}
-    .value-card:hover{transform:translateY(-3px);}
-    .value-icon{font-size:1.6rem;flex-shrink:0;width:52px;height:52px;background:var(--beige);border-radius:12px;display:flex;align-items:center;justify-content:center;}
-    .value-card h3{font-size:1rem;color:var(--brown);margin-bottom:4px;}
-    .value-card p{font-size:0.88rem;color:var(--text-lt);}
+    /* ── TIPOGRAFÍA ── */
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.25; }
+    h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 700; }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 600; }
+    h3 { font-size: 1.25rem; font-weight: 600; }
+    p  { font-size: 1.05rem; }
 
-    /* RECURSOS GRATUITOS */
-    #recursos-gratuitos{background:linear-gradient(135deg,var(--rust) 0%,var(--brown) 100%);position:relative;overflow:hidden;}
-    #recursos-gratuitos::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:rgba(255,255,255,0.04);border-radius:50%;pointer-events:none;}
-    .recursos-header{text-align:center;margin-bottom:52px;}
-    .recursos-header .badge{background:rgba(255,255,255,0.18);color:var(--white);}
-    .recursos-header h2{color:var(--white);margin-bottom:12px;}
-    .recursos-header p{color:rgba(255,255,255,0.80);max-width:520px;margin:0 auto;}
-    .recurso-featured{background:var(--white);border-radius:24px;padding:40px;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;margin-bottom:36px;position:relative;overflow:hidden;}
-    .recurso-featured::after{content:'DESTACADO';position:absolute;top:20px;right:-28px;background:var(--sage);color:var(--white);font-size:0.65rem;font-weight:800;letter-spacing:.12em;padding:5px 36px;transform:rotate(45deg);}
-    @media(max-width:680px){.recurso-featured{grid-template-columns:1fr;text-align:center;}.feat-icon{margin:0 auto;}}
-    .feat-icon{width:80px;height:80px;background:linear-gradient(135deg,#F2E0CE,#E8C9A8);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;flex-shrink:0;}
-    .recurso-featured h3{font-size:1.3rem;color:var(--brown);margin-bottom:8px;}
-    .recurso-featured p{color:var(--text-lt);margin-bottom:20px;font-size:1rem;}
-    .recursos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-    @media(max-width:640px){.recursos-grid{grid-template-columns:1fr;}}
-    .recurso-card{background:var(--white);border-radius:20px;padding:30px 26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;transition:transform .25s,box-shadow .25s;}
-    .recurso-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
-    .recurso-card-icon{font-size:2rem;width:56px;height:56px;background:#F2E0CE;border-radius:14px;display:flex;align-items:center;justify-content:center;}
-    .recurso-card h3{font-size:1.05rem;color:var(--brown);}
-    .recurso-card p{font-size:0.9rem;color:var(--text-lt);flex:1;}
+    /* ── BOTONES ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .btn:hover  { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--rust); color: var(--white); }
+    .btn-primary:hover { background: var(--brown); }
+    .btn-outline { background: transparent; color: var(--rust); border: 2px solid var(--rust); }
+    .btn-outline:hover { background: var(--rust); color: var(--white); }
+    .btn-sage { background: var(--sage); color: var(--white); }
+    .btn-sage:hover { background: var(--sage-dk); }
+    .btn-white { background: var(--white); color: var(--rust); }
+    .btn-white:hover { background: var(--beige); }
+    .btn-xs { padding: 10px 20px; font-size: 0.9rem; }
 
-    /* VIDEOS */
-    .section-header{text-align:center;margin-bottom:48px;}
-    .section-header h2{color:var(--brown);margin-bottom:12px;}
-    .section-header p{color:var(--text-lt);max-width:540px;margin:0 auto;}
-    .videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-    @media(max-width:900px){.videos-grid{grid-template-columns:1fr 1fr;}}
-    @media(max-width:600px){.videos-grid{grid-template-columns:1fr;}}
-    .video-card{background:var(--white);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;}
-    .video-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
-    .video-embed{position:relative;width:100%;padding-top:56.25%;background:var(--sand);}
-    .video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
-    .video-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--sand) 0%,var(--warm) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--brown);cursor:pointer;}
-    .play-btn{width:52px;height:52px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;padding-left:4px;transition:transform .2s;}
-    .video-placeholder:hover .play-btn{transform:scale(1.12);}
-    .video-placeholder span{font-size:0.75rem;font-weight:700;opacity:.7;}
-    .video-body{padding:20px;}
-    .video-body h3{font-size:1rem;color:var(--brown);margin-bottom:6px;}
-    .video-body p{font-size:0.85rem;color:var(--text-lt);margin-bottom:16px;}
-    .video-cta{display:flex;gap:10px;flex-wrap:wrap;}
+    /* ── NAVBAR ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,246,240,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sand);
+      padding: 14px 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--rust);
+      line-height: 1.2;
+    }
+    .main-nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .nav-link { color: var(--text-lt); transition: color .2s; }
+    .nav-link:hover { color: var(--rust); }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--rust);
+      padding: 8px;
+    }
+    @media (max-width: 700px) {
+      .main-nav { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
 
-    /* CTA */
-    #cta{background:linear-gradient(145deg,#EBF3EC 0%,#D6EBDA 100%);text-align:center;}
-    #cta h2{color:var(--sage-dk);font-size:clamp(1.8rem,5vw,3rem);margin-bottom:16px;}
-    #cta p{color:var(--text-lt);max-width:500px;margin:0 auto 36px;font-size:1.1rem;}
-    .cta-btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;}
+    /* ── HERO ── */
+    #inicio {
+      background: linear-gradient(160deg, var(--cream) 0%, var(--beige) 60%, #E8D8C4 100%);
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    #inicio::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,130,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #inicio::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(122,158,126,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--sage-dk);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 2px;
+      background: var(--sage);
+    }
+    .hero-title { color: var(--brown); margin-bottom: 20px; }
+    .hero-title em { font-style: italic; color: var(--terracotta); }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-lt);
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-trust {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text-lt);
+    }
+    .trust-dots { display: flex; }
+    .dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--cream);
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      margin-left: -8px;
+    }
+    .dot:first-child { margin-left: 0; }
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
+    .hero-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-lg);
+      max-width: 320px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -16px; right: -16px;
+      width: 60px; height: 60px;
+      background: var(--beige);
+      border-radius: 50%;
+    }
+    .hero-card-badge {
+      position: absolute;
+      top: -12px; left: 24px;
+      background: var(--sage);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .hero-icon { font-size: 3.5rem; margin-bottom: 16px; }
+    .hero-card h3 { font-size: 1.05rem; color: var(--brown); margin-bottom: 8px; }
+    .hero-card p  { font-size: 0.9rem; color: var(--text-lt); margin-bottom: 20px; }
 
-    /* FOOTER */
-    footer{background:var(--brown);color:rgba(255,255,255,0.8);padding:48px 0 32px;}
-    .footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:36px;}
-    @media(max-width:700px){.footer-inner{grid-template-columns:1fr;gap:28px;}}
-    .footer-brand h3{font-family:var(--font-display);color:var(--white);font-size:1.2rem;margin-bottom:8px;}
-    .footer-brand p{font-size:0.88rem;line-height:1.6;}
-    .footer-col h4{color:var(--white);font-size:0.88rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;}
-    .footer-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
-    .footer-links a{font-size:0.9rem;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;transition:color .2s;}
-    .footer-links a:hover{color:var(--white);}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,0.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:0.8rem;color:rgba(255,255,255,0.5);}
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .about-text h2 { color: var(--brown); margin-bottom: 16px; }
+    .about-text p  { color: var(--text-lt); margin-bottom: 14px; }
+    .about-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .pill {
+      background: var(--white);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 10px rgba(90,50,30,0.08);
+    }
+    .values-stack { display: flex; flex-direction: column; gap: 20px; }
+    .value-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: transform .2s;
+    }
+    .value-card:hover { transform: translateY(-3px); }
+    .value-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      width: 52px; height: 52px;
+      background: var(--beige);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .value-card h3 { font-size: 1rem; color: var(--brown); margin-bottom: 4px; }
+    .value-card p  { font-size: 0.95rem; color: var(--text-lt); }
 
-    /* STICKY BTN */
-    .sticky-btn{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:200;background:var(--rust);color:var(--white);padding:14px 32px;border-radius:50px;font-family:var(--font-body);font-size:0.95rem;font-weight:700;box-shadow:0 8px 32px rgba(140,74,47,0.45);white-space:nowrap;cursor:pointer;border:none;animation:float 3s ease-in-out infinite;text-decoration:none;}
-    @media(max-width:760px){.sticky-btn{display:flex;align-items:center;gap:8px;}}
-    @keyframes float{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-4px);}}
+    /* ── ESCENARIOS ── */
+    .escenarios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .escenario-card {
+      background: var(--white);
+      border: 1.5px solid var(--sage-lt);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      text-decoration: none;
+      transition: box-shadow .2s ease, transform .2s ease;
+      cursor: pointer;
+    }
+    .escenario-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .escenario-icon { font-size: 1.75rem; line-height: 1; }
+    .escenario-situacion {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .escenario-cta {
+      font-size: 0.9rem;
+      color: var(--sage-dk);
+      font-weight: 500;
+      margin-top: auto;
+    }
+    .escenario-card--soon {
+      opacity: 0.6;
+      cursor: default;
+      pointer-events: none;
+    }
+    .escenario-cta--soon {
+      color: var(--text-lt);
+      font-style: italic;
+    }
 
-    /* POPUP */
-    .popup-overlay{display:none;position:fixed;inset:0;background:rgba(58,42,30,0.65);z-index:999;align-items:center;justify-content:center;padding:20px;}
-    .popup-overlay.active{display:flex;}
-    .popup-box{background:var(--white);border-radius:24px;padding:44px 40px;max-width:460px;width:100%;position:relative;text-align:center;box-shadow:0 20px 80px rgba(58,42,30,0.3);animation:popIn .35s cubic-bezier(.34,1.56,.64,1);}
-    @keyframes popIn{from{transform:scale(.85);opacity:0;}to{transform:scale(1);opacity:1;}}
-    .popup-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.4rem;color:var(--text-lt);cursor:pointer;}
-    .popup-emoji{font-size:3rem;margin-bottom:14px;}
-    .popup-box h2{font-size:1.5rem;color:var(--brown);margin-bottom:10px;}
-    .popup-box p{color:var(--text-lt);margin-bottom:24px;font-size:0.95rem;}
-    .popup-box .btn{width:100%;justify-content:center;}
-    .popup-note{font-size:0.78rem;color:#A08878;margin-top:12px;cursor:pointer;}
+    /* ── RECURSOS GRATUITOS ── */
+    #recursos-gratuitos {
+      background: linear-gradient(135deg, var(--rust) 0%, var(--brown) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #recursos-gratuitos::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .recursos-header { text-align: center; margin-bottom: 52px; }
+    .recursos-header .badge { background: rgba(255,255,255,0.18); color: var(--white); }
+    .recursos-header h2 { color: var(--white); margin-bottom: 12px; }
+    .recursos-header p  { color: rgba(255,255,255,0.80); max-width: 520px; margin: 0 auto; }
+    .recurso-featured {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .recurso-featured::after {
+      content: 'DESTACADO';
+      position: absolute;
+      top: 20px; right: -28px;
+      background: var(--sage);
+      color: var(--white);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      padding: 5px 36px;
+      transform: rotate(45deg);
+    }
+    .feat-icon {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #F2E0CE, #E8C9A8);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      flex-shrink: 0;
+    }
+    .recurso-featured h3 { font-size: 1.3rem; color: var(--brown); margin-bottom: 8px; }
+    .recurso-featured p  { color: var(--text-lt); margin-bottom: 20px; font-size: 1rem; }
+    .recursos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .recurso-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px 26px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .recurso-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .recurso-card-icon {
+      font-size: 2rem;
+      width: 56px; height: 56px;
+      background: #F2E0CE;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .recurso-card h3 { font-size: 1.05rem; color: var(--brown); }
+    .recurso-card p  { font-size: 0.95rem; color: var(--text-lt); flex: 1; }
 
-    /* FADE */
-    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
-    .fade-up.visible{opacity:1;transform:translateY(0);}
-    .delay-1{transition-delay:.1s;}.delay-2{transition-delay:.2s;}.delay-3{transition-delay:.3s;}.delay-4{transition-delay:.4s;}
+    /* ── VIDEOS ── */
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header h2 { color: var(--brown); margin-bottom: 12px; }
+    .section-header p  { color: var(--text-lt); max-width: 540px; margin: 0 auto; }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .video-card {
+      background: var(--white);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .video-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: var(--sand);
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--sand) 0%, var(--warm) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--brown);
+      cursor: pointer;
+    }
+    .play-btn {
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      padding-left: 4px;
+      transition: transform .2s;
+    }
+    .video-placeholder:hover .play-btn { transform: scale(1.12); }
+    .video-placeholder span { font-size: 0.9rem; font-weight: 700; opacity: .7; }
+    .video-body { padding: 20px; }
+    .video-body h3 { font-size: 1rem; color: var(--brown); margin-bottom: 6px; }
+    .video-body p  { font-size: 0.95rem; color: var(--text-lt); margin-bottom: 16px; }
+    .video-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ── FINAL CTA ── */
+    .final-cta { background: linear-gradient(145deg, #EBF3EC 0%, #D6EBDA 100%); text-align: center; }
+    .final-cta h2 { color: var(--sage-dk); font-size: clamp(1.8rem,5vw,3rem); margin-bottom: 16px; }
+    .final-cta p  { color: var(--text-lt); max-width: 500px; margin: 0 auto 36px; font-size: 1.1rem; }
+    .cta-buttons { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--brown); color: rgba(255,255,255,0.8); padding: 48px 0 32px; }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    .footer-brand h3 {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.6; }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+      line-height: 1.6;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-disclaimer {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 8px;
+    }
+
+    /* ── STICKY MOBILE BUTTON ── */
+    .sticky-btn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      background: var(--rust);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 0 8px 32px rgba(140,74,47,0.45);
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+      animation: float 3s ease-in-out infinite;
+      text-decoration: none;
+      min-height: 56px;
+      align-items: center;
+      gap: 8px;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    /* ── EXIT POPUP ── */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(58,42,30,0.65);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .popup-overlay.active { display: flex; }
+    .popup-box {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 44px 40px;
+      max-width: 460px;
+      width: 100%;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 20px 80px rgba(58,42,30,0.3);
+      animation: popIn .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes popIn {
+      from { transform: scale(.85); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .popup-close {
+      position: absolute;
+      top: 14px; right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--text-lt);
+      cursor: pointer;
+    }
+    .popup-emoji   { font-size: 3rem; margin-bottom: 14px; }
+    .popup-box h2  { font-size: 1.5rem; color: var(--brown); margin-bottom: 10px; }
+    .popup-box p   { color: var(--text-lt); margin-bottom: 24px; font-size: 1rem; }
+    .popup-box .btn { width: 100%; justify-content: center; }
+    .popup-note {
+      font-size: 0.9rem;
+      color: #A08878;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+
+    /* ── FADE ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .4s; }
+
+    /* ════════════════════════════════════
+       MEJORAS MÓVIL + ACCESIBILIDAD 55+
+       ════════════════════════════════════ */
+
+    /* Espaciado vertical */
+    @media (max-width: 760px) {
+      .section { padding: 96px 0; }
+    }
+
+    /* Botones táctiles full-width */
+    @media (max-width: 760px) {
+      .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 56px;
+        font-size: 1rem;
+      }
+      .btn-xs {
+        width: auto;
+        min-height: 48px;
+      }
+      .hero-btns,
+      .cta-buttons {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    /* Hero */
+    @media (max-width: 760px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero-sub { font-size: 1.1rem; max-width: 100%; }
+    }
+
+    /* About */
+    @media (max-width: 760px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Escenarios — una columna */
+    @media (max-width: 760px) {
+      .escenarios-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .escenario-card { padding: 24px; }
+    }
+
+    /* Recursos */
+    @media (max-width: 680px) {
+      .recurso-featured {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .feat-icon { margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .recursos-grid { grid-template-columns: 1fr; gap: 20px; }
+      .recurso-card  { padding: 28px 24px; }
+    }
+
+    /* Videos */
+    @media (max-width: 900px) { .videos-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .videos-grid { grid-template-columns: 1fr; } }
+
+    /* Cards — radio más suave */
+    @media (max-width: 760px) {
+      .value-card,
+      .recurso-card,
+      .escenario-card { border-radius: 22px; }
+    }
+
+    /* Navbar */
+    @media (max-width: 760px) {
+      .site-header { padding: 18px 0; }
+    }
+
+    /* Footer */
+    @media (max-width: 700px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    /* Popup */
+    @media (max-width: 500px) {
+      .popup-box { padding: 36px 24px; }
+      .popup-box h2 { font-size: 1.3rem; }
+    }
+
+    /* Sticky button */
+    @media (max-width: 760px) {
+      .sticky-btn { display: flex; }
+    }
+
+    /* ESCENARIOS — override recursos-header para fondo claro */
+    #escenarios .recursos-header .badge {
+      background: var(--sage-lt);
+      color: var(--sage-dk);
+    }
+    #escenarios .recursos-header h2 {
+      color: var(--brown);
+    }
+    #escenarios .recursos-header p {
+      color: var(--text-lt);
+    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="container nav-inner">
-    <a class="nav-logo" href="#inicio">CTNC<span>Cuidar También Necesita Cuidado</span></a>
-    <ul class="nav-links">
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#recursos-gratuitos">Recursos Gratis</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#cta">Suscríbete</a></li>
-    </ul>
-    <a href="https://payhip.com/ctnc" target="_blank" rel="noopener" class="btn btn-primary" style="padding:11px 22px;font-size:0.88rem;">Recursos Gratis</a>
+<!-- ── NAVBAR ── -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#inicio" class="logo">Cuidar También Necesita Cuidado</a>
+    <nav class="main-nav">
+      <a href="#inicio"            class="nav-link">Inicio</a>
+      <a href="#escenarios"        class="nav-link">Situaciones</a>
+      <a href="#recursos-gratuitos" class="nav-link">Ayuda</a>
+      <a href="https://www.youtube.com/@cuidartambiennecesitacuidado"
+         target="_blank" rel="noopener" class="nav-link">Videos</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
   </div>
-</nav>
+</header>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section id="inicio">
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="hero-eyebrow">Canal de YouTube en Español</div>
+        <div class="hero-eyebrow">Para quienes cuidan a alguien con Alzheimer o demencia</div>
         <h1 class="hero-title fade-up">No tienes que<br><em>cuidar en soledad.</em></h1>
-        <p class="hero-sub fade-up delay-1">Apoyo emocional práctico y herramientas reales para cuidadores de Alzheimer y demencia.</p>
+        <p class="hero-sub fade-up delay-1">Cuando ya no sabes cómo responder, qué decir, o simplemente te sientes agotada… aquí hay apoyo para ti.</p>
         <div class="hero-btns fade-up delay-2">
-          <a href="https://www.youtube.com/@cuidartambiennecesitacuidado" target="_blank" rel="noopener" class="btn btn-primary">▶ Ver Canal en YouTube</a>
-          <a href="https://payhip.com/ctnc" target="_blank" rel="noopener" class="btn btn-outline">📥 Recursos Gratuitos</a>
+          <a href="https://www.youtube.com/@cuidartambiennecesitacuidado"
+             target="_blank" rel="noopener" class="btn btn-primary">
+             ▶ Ver Canal en YouTube
+          </a>
+          <a href="https://payhip.com/ctnc"
+             target="_blank" rel="noopener" class="btn btn-outline">
+             📥 Empieza por aquí
+          </a>
         </div>
         <div class="hero-trust fade-up delay-3">
           <div class="trust-dots">
-            <div class="dot">👩</div><div class="dot">👩</div><div class="dot">👨</div><div class="dot">👩</div>
+            <div class="dot">👩</div>
+            <div class="dot">👩</div>
+            <div class="dot">👨</div>
+            <div class="dot">👩</div>
           </div>
-          <span>Cada día más cuidadores encuentran apoyo</span>
+          <span>Cada día más cuidadores encuentran aquí un poco de apoyo y compañía.</span>
         </div>
       </div>
       <div class="hero-visual fade-up delay-2">
@@ -220,27 +800,37 @@
           <div class="hero-card-badge">Recurso Gratis</div>
           <div class="hero-icon">🤍</div>
           <h3>7 cosas que todo cuidador necesita escuchar</h3>
-          <p>Una guía breve y emocional para el cuidador que da todo de sí y aún siente que no es suficiente.</p>
-          <a href="https://payhip.com/b/egBAs" target="_blank" rel="noopener" class="btn btn-sage" style="width:100%;justify-content:center;">Descargar gratis →</a>
+          <p>Para esos días en que sientes que ya no puedes más… y aun así sigues cuidando.</p>
+          <a href="https://payhip.com/b/egBAs"
+             target="_blank" rel="noopener"
+             class="btn btn-sage"
+             style="width:100%;justify-content:center;">
+             Descargar gratis →
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ── ABOUT ── -->
 <section id="nosotros" class="section section-alt">
   <div class="container">
     <div class="about-grid">
       <div class="about-text fade-up">
-        <div class="badge">Nuestra Misión</div>
-        <h2>Porque cuidar también tiene un costo emocional</h2>
-        <p>CTNC nació del corazón de quien también ha cuidado. Sabemos lo que se siente llevar el peso de cuidar a un ser amado con Alzheimer o demencia — el agotamiento, la soledad, las dudas, el amor que no descansa.</p>
-        <p>Nuestro canal de YouTube es un espacio en español donde los cuidadores encuentran apoyo real: sin juicios, sin tecnicismos imposibles, sin soledad. Aquí se valida tu esfuerzo, se te dan herramientas, y se te recuerda que tú también mereces cuidado.</p>
-        <p>Porque el cuidador que no se cuida, eventualmente no puede cuidar.</p>
+        <div class="badge">Acompañamiento para cuidadores</div>
+        <h2>Porque cuidar a alguien también puede agotarte</h2>
+        <p>Cuidar a una persona con Alzheimer o demencia puede sentirse muy solitario.
+           Hay días en que no sabes cómo responder, qué hacer,
+           o cómo seguir teniendo paciencia cuando tú también estás cansada.</p>
+        <p>Este espacio fue creado para acompañarte en esos momentos.
+           Aquí encontrarás ayuda práctica, situaciones que seguramente reconocerás
+           y conversaciones pensadas para quienes cuidan todos los días.</p>
+        <p>Sin juicios. Sin explicaciones complicadas.
+           Solo apoyo honesto para el día a día — sin rodeos ni tecnicismos.</p>
         <div class="about-pills">
-          <div class="pill">🌿 Apoyo emocional</div>
-          <div class="pill">🧠 Información clara</div>
+          <div class="pill">🌿 Ayuda práctica</div>
+          <div class="pill">🤍 Acompañamiento</div>
           <div class="pill">🤝 Comunidad</div>
           <div class="pill">❤️ Sin juicios</div>
         </div>
@@ -248,72 +838,150 @@
       <div class="values-stack fade-up delay-1">
         <div class="value-card">
           <div class="value-icon">💬</div>
-          <div><h3>Tú no estás exagerando</h3><p>Lo que sientes es válido. El agotamiento del cuidador es real y merece atención.</p></div>
+          <div>
+            <h3>Lo que sientes también importa</h3>
+            <p>El cansancio, la culpa y la frustración del cuidador
+               muchas veces se viven en silencio.</p>
+          </div>
         </div>
         <div class="value-card">
           <div class="value-icon">🧡</div>
-          <div><h3>Información sin jerga médica</h3><p>Todo en español sencillo, diseñado para quien cuida todos los días.</p></div>
+          <div>
+            <h3>Explicado de forma simple</h3>
+            <p>Situaciones reales del cuidado explicadas de manera clara,
+               sin términos médicos ni explicaciones complicadas.</p>
+          </div>
         </div>
         <div class="value-card">
           <div class="value-icon">🌱</div>
-          <div><h3>Herramientas que funcionan</h3><p>Recursos prácticos para organizar, comunicar y sobrevivir el día a día.</p></div>
+          <div>
+            <h3>Ayuda para el día a día</h3>
+            <p>Qué hacer, qué decir y cómo reaccionar
+               en momentos difíciles del cuidado.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RECURSOS GRATUITOS -->
+<!-- ── ESCENARIOS ── -->
+<section id="escenarios" class="section section-alt">
+  <div class="container">
+    <div class="recursos-header fade-up">
+      <div class="badge">Situaciones del cuidado</div>
+      <h2>Esto que estás viviendo tiene nombre</h2>
+      <p>Situaciones que muchos cuidadores viven todos los días —
+         y donde a veces ayuda entender qué está pasando.</p>
+    </div>
+    <div class="escenarios-grid fade-up delay-1">
+
+      <a href="https://www.youtube.com/@cuidartambiennecesitacuidado"
+         target="_blank" rel="noopener" class="escenario-card">
+        <div class="escenario-icon">🔁</div>
+        <p class="escenario-situacion">Pregunta lo mismo una y otra vez</p>
+        <span class="escenario-cta">Ver video →</span>
+      </a>
+
+      <a href="https://www.youtube.com/@cuidartambiennecesitacuidado"
+         target="_blank" rel="noopener" class="escenario-card">
+        <div class="escenario-icon">🚪</div>
+        <p class="escenario-situacion">Quiere irse de casa</p>
+        <span class="escenario-cta">Ver video →</span>
+      </a>
+
+      <div class="escenario-card escenario-card--soon">
+        <div class="escenario-icon">🚿</div>
+        <p class="escenario-situacion">Se niega a bañarse</p>
+        <span class="escenario-cta escenario-cta--soon">En preparación</span>
+      </div>
+
+      <div class="escenario-card escenario-card--soon">
+        <div class="escenario-icon">😔</div>
+        <p class="escenario-situacion">Me acusa de robarle cosas</p>
+        <span class="escenario-cta escenario-cta--soon">En preparación</span>
+      </div>
+
+      <a href="https://payhip.com/b/68o2i"
+         target="_blank" rel="noopener" class="escenario-card">
+        <div class="escenario-icon">💔</div>
+        <p class="escenario-situacion">Ya no me reconoce</p>
+        <span class="escenario-cta">Ver guía →</span>
+      </a>
+
+      <a href="https://www.youtube.com/@cuidartambiennecesitacuidado"
+         target="_blank" rel="noopener" class="escenario-card">
+        <div class="escenario-icon">😮‍💨</div>
+        <p class="escenario-situacion">Siento que estoy perdiendo la paciencia</p>
+        <span class="escenario-cta">Ver video →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── RECURSOS GRATUITOS ── -->
 <section id="recursos-gratuitos" class="section">
   <div class="container">
     <div class="recursos-header fade-up">
-      <div class="badge">100% Gratuitos</div>
-      <h2>Recursos Gratuitos</h2>
-      <p>Descarga estos recursos sin costo. Creados con amor para acompañarte en cada etapa del cuidado.</p>
+      <div class="badge">Ayuda para el día a día</div>
+      <h2>Recursos para momentos difíciles del cuidado</h2>
+      <p>Apoyo concreto para situaciones que muchos cuidadores viven todos los días.</p>
     </div>
 
-    <!-- Featured -->
     <div class="recurso-featured fade-up delay-1">
       <div class="feat-icon">🤍</div>
       <div>
         <h3>7 cosas que todo cuidador necesita escuchar</h3>
-        <p>Una guía breve y emocional para el cuidador que da todo de sí y aún siente que no es suficiente. Palabras de apoyo, recordatorios importantes y herramientas para el día a día.</p>
-        <a href="https://payhip.com/b/egBAs" target="_blank" rel="noopener" class="btn btn-primary">📥 Descargar gratis</a>
+        <p>Para esos días en que sientes que ya no puedes más,
+           pero el cuidado sigue esperando por ti.</p>
+        <a href="https://payhip.com/b/egBAs"
+           target="_blank" rel="noopener" class="btn btn-primary">
+           📥 Descargar gratis
+        </a>
       </div>
     </div>
 
-    <!-- Grid cards -->
     <div class="recursos-grid">
       <div class="recurso-card fade-up delay-2">
         <div class="recurso-card-icon">💔</div>
-        <h3>Guía: Qué hacer cuando ya no te reconoce</h3>
-        <p>Una guía práctica para esos momentos dolorosos en los que tu ser querido parece no reconocerte. Cómo responder con amor cuando las palabras no alcanzan.</p>
-        <a href="https://payhip.com/b/68o2i" target="_blank" rel="noopener" class="btn btn-primary btn-xs">📥 Descargar gratis</a>
+        <h3>Qué hacer cuando ya no te reconoce</h3>
+        <p>Una guía simple para entender ese momento
+           y encontrar calma cuando parece no reconocerte.</p>
+        <a href="https://payhip.com/b/68o2i"
+           target="_blank" rel="noopener" class="btn btn-primary btn-xs">
+           📥 Descargar gratis
+        </a>
       </div>
       <div class="recurso-card fade-up delay-3">
         <div class="recurso-card-icon">🌸</div>
-        <h3>Set de Fondos: Anclajes de Calma para tu Celular</h3>
-        <p>Frases visuales de apoyo para recordarte que tú también necesitas cuidado. Lleva un recordatorio de amor propio contigo siempre.</p>
-        <a href="https://payhip.com/b/oZamb" target="_blank" rel="noopener" class="btn btn-primary btn-xs">📥 Descargar gratis</a>
+        <h3>Recordatorios de calma para tu celular</h3>
+        <p>Imágenes con frases cortas para los días
+           en que el cuidado se siente demasiado pesado.</p>
+        <a href="https://payhip.com/b/oZamb"
+           target="_blank" rel="noopener" class="btn btn-primary btn-xs">
+           📥 Descargar gratis
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VIDEOS -->
+<!-- ── VIDEOS ── -->
 <section id="videos" class="section section-alt">
   <div class="container">
     <div class="section-header fade-up">
       <div class="badge badge-warm">Canal de YouTube</div>
       <h2>Videos para el cuidador de hoy</h2>
-      <p>Contenido creado con amor para acompañarte en cada etapa del cuidado.</p>
+      <p>Contenido pensado para acompañarte en cada etapa del cuidado.</p>
     </div>
     <div class="videos-grid">
 
       <div class="video-card fade-up">
         <div class="video-embed">
           <div class="video-placeholder" onclick="loadVideo(this,'G9RhliX7OjA')">
-            <div class="play-btn">▶</div><span>YouTube · CTNC</span>
+            <div class="play-btn">▶</div>
+            <span>YouTube · CTNC</span>
           </div>
         </div>
         <div class="video-body">
@@ -321,7 +989,7 @@
           <p>Entiende por qué ocurre la agitación vespertina y qué puedes hacer hoy mismo para atravesar esos momentos con más calma.</p>
           <div class="video-cta">
             <a href="https://youtu.be/G9RhliX7OjA" target="_blank" rel="noopener" class="btn btn-primary btn-xs">Ver video</a>
-            <a href="https://payhip.com/b/egBAs" target="_blank" rel="noopener" class="btn btn-outline btn-xs">📘 Recurso</a>
+            <a href="https://payhip.com/b/egBAs"   target="_blank" rel="noopener" class="btn btn-outline btn-xs">📘 Recurso</a>
           </div>
         </div>
       </div>
@@ -329,15 +997,16 @@
       <div class="video-card fade-up delay-1">
         <div class="video-embed">
           <div class="video-placeholder" onclick="loadVideo(this,'R2CVipMOf8w')">
-            <div class="play-btn">▶</div><span>YouTube · CTNC</span>
+            <div class="play-btn">▶</div>
+            <span>YouTube · CTNC</span>
           </div>
         </div>
         <div class="video-body">
           <h3>A veces solo quiero abrir la puerta y desaparecer</h3>
-          <p>Si alguna vez has sentido ese agotamiento tan profundo, este video es para recordarte que no estás solo y que lo que sientes tiene nombre.</p>
+          <p>Si alguna vez has sentido ese agotamiento tan profundo, este video es para recordarte que no estás sola y que lo que sientes tiene nombre.</p>
           <div class="video-cta">
             <a href="https://youtu.be/R2CVipMOf8w" target="_blank" rel="noopener" class="btn btn-primary btn-xs">Ver video</a>
-            <a href="https://payhip.com/b/68o2i" target="_blank" rel="noopener" class="btn btn-outline btn-xs">📘 Recurso</a>
+            <a href="https://payhip.com/b/68o2i"   target="_blank" rel="noopener" class="btn btn-outline btn-xs">📘 Recurso</a>
           </div>
         </div>
       </div>
@@ -345,53 +1014,69 @@
       <div class="video-card fade-up delay-2">
         <div class="video-embed">
           <div class="video-placeholder" onclick="loadVideo(this,'uGhKEjIAsT4')">
-            <div class="play-btn">▶</div><span>YouTube · CTNC</span>
+            <div class="play-btn">▶</div>
+            <span>YouTube · CTNC</span>
           </div>
         </div>
         <div class="video-body">
           <h3>Alzheimer: ¿Qué hacer cuando ya no te reconoce?</h3>
-          <p>Uno de los momentos más dolorosos del cuidado — aquí encontrarás palabras y herramientas para atravesarlo con amor.</p>
+          <p>Uno de los momentos más dolorosos del cuidado — aquí encontrarás palabras y orientación para atravesarlo con calma.</p>
           <div class="video-cta">
             <a href="https://youtu.be/uGhKEjIAsT4" target="_blank" rel="noopener" class="btn btn-primary btn-xs">Ver video</a>
-            <a href="https://payhip.com/b/oZamb" target="_blank" rel="noopener" class="btn btn-outline btn-xs">📘 Recurso</a>
+            <a href="https://payhip.com/b/oZamb"   target="_blank" rel="noopener" class="btn btn-outline btn-xs">📘 Recurso</a>
           </div>
         </div>
       </div>
 
     </div>
     <div style="text-align:center;margin-top:40px;" class="fade-up">
-      <a href="https://www.youtube.com/@cuidartambiennecesitacuidado" target="_blank" rel="noopener" class="btn btn-primary">▶ Ver todos los videos en YouTube</a>
+      <a href="https://www.youtube.com/@cuidartambiennecesitacuidado"
+         target="_blank" rel="noopener" class="btn btn-primary">
+         ▶ Ver todos los videos en YouTube
+      </a>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section id="cta" class="section">
+<!-- ── FINAL CTA ── -->
+<section id="cta" class="section final-cta">
   <div class="container">
-    <div class="badge fade-up" style="background:rgba(90,122,94,0.15);color:var(--sage-dk);">Empieza hoy</div>
-    <h2 class="fade-up delay-1">Cuidar también<br>necesita cuidado.</h2>
-    <p class="fade-up delay-2">Descarga tus recursos gratuitos y suscríbete al canal.<br>Tú te lo mereces.</p>
-    <div class="cta-btns fade-up delay-3">
-      <a href="https://www.youtube.com/@cuidartambiennecesitacuidado" target="_blank" rel="noopener" class="btn btn-sage">▶ Suscribirse al Canal</a>
-      <a href="https://payhip.com/b/egBAs" target="_blank" rel="noopener" class="btn btn-primary">📥 Descargar recurso gratis</a>
+    <div class="final-cta-card fade-up">
+      <div class="badge" style="background:rgba(90,122,94,0.15);color:var(--sage-dk);">
+        Cuidar también necesita cuidado
+      </div>
+      <h2>A veces el cuidador también necesita que alguien lo acompañe.</h2>
+      <p>Apoyo para esos momentos difíciles que muchas familias viven en silencio.</p>
+      <div class="cta-buttons fade-up delay-1">
+        <a href="https://www.youtube.com/@cuidartambiennecesitacuidado"
+           target="_blank" rel="noopener" class="btn btn-primary">
+           ▶ Ver Canal
+        </a>
+        <a href="https://payhip.com/ctnc"
+           target="_blank" rel="noopener" class="btn btn-outline">
+           📥 Empieza por aquí
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
         <h3>CTNC</h3>
-        <p>Cuidar También Necesita Cuidado<br>Apoyo emocional y recursos gratuitos en español para cuidadores de Alzheimer y demencia.</p>
+        <p>Cuidar También Necesita Cuidado<br>
+           Apoyo y acompañamiento en español para cuidadores de Alzheimer y demencia.</p>
       </div>
       <div class="footer-col">
         <h4>Navegación</h4>
         <ul class="footer-links">
           <li><a href="#inicio">🏠 Inicio</a></li>
           <li><a href="#nosotros">💛 Nosotros</a></li>
-          <li><a href="#recursos-gratuitos">📥 Recursos Gratis</a></li>
+          <li><a href="#escenarios">🗂 Situaciones</a></li>
+          <li><a href="#recursos-gratuitos">📥 Ayuda</a></li>
           <li><a href="#videos">▶ Videos</a></li>
         </ul>
       </div>
@@ -400,55 +1085,81 @@
         <ul class="footer-links">
           <li><a href="https://www.youtube.com/@cuidartambiennecesitacuidado" target="_blank" rel="noopener">▶ Canal YouTube</a></li>
           <li><a href="https://payhip.com/ctnc" target="_blank" rel="noopener">🛒 Tienda CTNC</a></li>
-          <li><a href="https://payhip.com/b/egBAs" target="_blank" rel="noopener">📖 7 Cosas que Todo Cuidador Necesita Escuchar</a></li>
+          <li><a href="https://payhip.com/b/egBAs" target="_blank" rel="noopener">📖 7 Cosas que todo cuidador necesita escuchar</a></li>
           <li><a href="https://payhip.com/b/68o2i" target="_blank" rel="noopener">💔 Cuando ya no te reconoce</a></li>
-          <li><a href="https://payhip.com/b/oZamb" target="_blank" rel="noopener">🌸 Anclajes de Calma</a></li>
+          <li><a href="https://payhip.com/b/oZamb" target="_blank" rel="noopener">🌸 Recordatorios de calma</a></li>
+          <li><a href="https://www.facebook.com/groups/cuidadoresctnc" target="_blank" rel="noopener">👥 Grupo de apoyo en Facebook</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 CTNC — Cuidar También Necesita Cuidado</span>
-      <span>Hecho con 🤍 para los cuidadores</span>
+      <span>Hecho para quienes cuidan todos los días.</span>
     </div>
+    <p class="footer-disclaimer" style="text-align:center;margin-top:16px;">
+      Contenido informativo y de acompañamiento. No reemplaza atención médica profesional.
+    </p>
   </div>
 </footer>
 
-<!-- STICKY MOBILE BUTTON -->
-<a class="sticky-btn" href="https://payhip.com/ctnc" target="_blank" rel="noopener">📥 Recurso Gratis</a>
+<!-- ── STICKY MOBILE BUTTON ── -->
+<a class="sticky-btn" href="https://payhip.com/ctnc" target="_blank" rel="noopener">
+  📥 Empieza por aquí
+</a>
 
-<!-- EXIT INTENT POPUP -->
+<!-- ── EXIT POPUP ── -->
 <div class="popup-overlay" id="exitPopup">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup()" aria-label="Cerrar">×</button>
     <div class="popup-emoji">🤍</div>
-    <h2>¡Espera, esto es para ti!</h2>
-    <p>Antes de irte, llévate nuestra guía gratuita:<br><strong>"7 cosas que todo cuidador necesita escuchar"</strong></p>
-    <a href="https://payhip.com/b/egBAs" target="_blank" rel="noopener" class="btn btn-primary" onclick="closePopup()">📥 Descargar gratis ahora</a>
-    <p class="popup-note" onclick="closePopup()">No, gracias — me voy sin ella</p>
+    <h2>Antes de irte…</h2>
+    <p>Si hoy fue uno de esos días difíciles,
+       quizás esto pueda acompañarte un poco.</p>
+    <a href="https://payhip.com/b/egBAs"
+       target="_blank" rel="noopener"
+       class="btn btn-primary"
+       onclick="closePopup()">
+       📥 Ver recurso
+    </a>
+    <p class="popup-note" onclick="closePopup()">Seguir navegando</p>
   </div>
 </div>
 
 <script>
   // Fade-up on scroll
-  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.12});
+  const obs = new IntersectionObserver(
+    es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.12 }
+  );
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
   // Exit intent popup
   let shown = false;
   const dismissed = sessionStorage.getItem('ctnc_popup');
-  document.addEventListener('mouseleave', e => { if(!shown && !dismissed && e.clientY < 20) showPopup(); });
-  if(!dismissed) setTimeout(() => { if(!shown) showPopup(); }, 35000);
-  function showPopup(){ shown=true; document.getElementById('exitPopup').classList.add('active'); }
-  function closePopup(){ document.getElementById('exitPopup').classList.remove('active'); sessionStorage.setItem('ctnc_popup','1'); }
-  document.getElementById('exitPopup').addEventListener('click', e => { if(e.target===document.getElementById('exitPopup')) closePopup(); });
+  document.addEventListener('mouseleave', e => {
+    if (!shown && !dismissed && e.clientY < 20) showPopup();
+  });
+  if (!dismissed) setTimeout(() => { if (!shown) showPopup(); }, 35000);
+  function showPopup() {
+    shown = true;
+    document.getElementById('exitPopup').classList.add('active');
+  }
+  function closePopup() {
+    document.getElementById('exitPopup').classList.remove('active');
+    sessionStorage.setItem('ctnc_popup', '1');
+  }
+  document.getElementById('exitPopup').addEventListener('click', e => {
+    if (e.target === document.getElementById('exitPopup')) closePopup();
+  });
 
   // YouTube lazy-load
-  // HOW TO USE: Replace VIDEO_ID_1, VIDEO_ID_2, VIDEO_ID_3 with real YouTube video IDs.
-  // Example: https://www.youtube.com/watch?v=ABC123 → the ID is ABC123
-  function loadVideo(placeholder, id){
-    if(!id || id.startsWith('VIDEO_ID')){ window.open('https://www.youtube.com/@cuidartambiennecesitacuidado','_blank'); return; }
+  function loadVideo(placeholder, id) {
+    if (!id || id.startsWith('VIDEO_ID')) {
+      window.open('https://www.youtube.com/@cuidartambiennecesitacuidado', '_blank');
+      return;
+    }
     const f = document.createElement('iframe');
-    f.src = 'https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';
+    f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
     f.allow = 'accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture';
     f.allowFullscreen = true;
     placeholder.parentNode.replaceChild(f, placeholder);
@@ -457,7 +1168,7 @@
 
 <!--
 ╔══════════════════════════════════════════════════════════╗
-║   🚀 CÓMO PUBLICAR EN GITHUB PAGES (instrucciones)      ║
+║   🚀 CÓMO PUBLICAR EN GITHUB PAGES                      ║
 ╠══════════════════════════════════════════════════════════╣
 ║                                                          ║
 ║  OPCIÓN 1 — Sin línea de comandos (más fácil):           ║
@@ -472,18 +1183,10 @@
 ║  7. En minutos tu sitio estará en:                       ║
 ║     https://TU_USUARIO.github.io/ctnc-web/               ║
 ║                                                          ║
-║  OPCIÓN 2 — Terminal:                                    ║
-║  git init && git add index.html                          ║
-║  git commit -m "Publicar sitio CTNC"                     ║
-║  git branch -M main                                      ║
-║  git remote add origin https://github.com/USER/REPO.git  ║
-║  git push -u origin main                                 ║
-║  Luego activa Pages en Settings → Pages.                 ║
-║                                                          ║
 ║  AGREGAR VIDEOS REALES:                                  ║
-║  Busca VIDEO_ID_1, VIDEO_ID_2, VIDEO_ID_3 arriba.        ║
-║  Reemplaza con el ID de tu video de YouTube.             ║
+║  El ID de YouTube está en la URL del video.              ║
 ║  Ejemplo: watch?v=ABC123  →  ID es  ABC123               ║
+║  Reemplaza el ID en la función loadVideo() de cada card. ║
 ║                                                          ║
 ╚══════════════════════════════════════════════════════════╝
 -->
